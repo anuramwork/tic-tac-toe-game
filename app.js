@@ -31,29 +31,10 @@ const resetGameFn = ()=> {
 } ;
 
 
-const checkWinner = () => {
-    for(let pattern of winPatterns){
-        console.log(pattern[0],pattern[1],pattern[2]);
-        let valat0 = boxes[pattern[0]].innerText;
-        let valat1 = boxes[pattern[1]].innerText;
-        let valat2 = boxes[pattern[2]].innerText;
-        console.log(valat0,valat1,valat2);
-        if(valat0 !== '' || valat1 !== '' || valat2 !== ''){
-            if(valat0 == valat1 && valat0 == valat2){
-                alert("winner is" , valat0);
-                
-            }
-            
-        }
-    
-       
-        
-    }
-};
 
 
 
-resetGame.addEventListener("click",resetGameFn);;
+
 
 
 for (let box of boxes){
@@ -74,3 +55,27 @@ for (let box of boxes){
 });
 }
 
+
+const checkWinner = () => {
+    for(let pattern of winPatterns){
+        console.log(pattern[0],pattern[1],pattern[2]);
+        let valat0 = boxes[pattern[0]].innerText;
+        let valat1 = boxes[pattern[1]].innerText;
+        let valat2 = boxes[pattern[2]].innerText;
+        console.log(valat0,valat1,valat2);
+        if(valat0 !== '' || valat1 !== '' || valat2 !== ''){
+            if(valat0 == valat1 && valat0 == valat2){
+                alert(`The winner is ${valat0}`);
+                resetGameFn();
+                return;
+            }
+            
+        }
+    
+       
+        
+    }
+};
+
+
+resetGame.addEventListener("click",resetGameFn);
