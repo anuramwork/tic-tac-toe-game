@@ -3,6 +3,7 @@ let newGame = document.querySelector("#newGame");
 let boxes = document.querySelectorAll(".box")
 
 let turn0 =true;
+let winner;
 
 const winPatterns = [
     [0,1,2],
@@ -50,7 +51,15 @@ for (let box of boxes){
         // box.disabled = true;
         console.log("box was clicked");
         
-        checkWinner();
+        winner = checkWinner();
+        if (winner !== undefined){
+            setTimeout(() => {
+                alert(`Winner is ${winner}"`);
+                resetGameFn();
+            }, 500); // 500 milliseconds = 0.5 seconds
+            
+            
+        }
 
 });
 }
@@ -65,9 +74,11 @@ const checkWinner = () => {
         console.log(valat0,valat1,valat2);
         if(valat0 !== '' || valat1 !== '' || valat2 !== ''){
             if(valat0 == valat1 && valat0 == valat2){
-                alert(`The winner is ${valat0}`);
-                resetGameFn();
-                return;
+                
+
+               
+                
+                return valat0;
             }
             
         }
